@@ -43,7 +43,7 @@ async function welcome() {
 // welcome();
 
 async function askQuestion() {
-   await inquirer
+ let answers =  await inquirer
         .prompt([     // prompt retuen value in obbject thsts why we use .then   (bydefult we see in "answer" )
             /* Pass your questions in here */
 
@@ -67,8 +67,8 @@ async function askQuestion() {
 
         ])
 
-        .then((answers) => {     //we access through . because we know this is object
-
+        // .then((answers) => {     //we access through . because we know this is object
+               // or use another alternative of .then       save value in answers use async function
             // console.log(answers);
 
             if (answers.opertor == "Addition") {
@@ -84,7 +84,7 @@ async function askQuestion() {
                 console.log(`${answers.num1} % ${answers.num2} = ${answers.num1 / answers.num2}`);
             }
 
-        })
+        }
 
 
 
@@ -97,7 +97,7 @@ async function askQuestion() {
     //       // Something else went wrong
     //     } 
     //   });
-};
+
 // askQuestion();
 
 

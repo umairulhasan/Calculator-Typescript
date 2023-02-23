@@ -32,7 +32,7 @@ async function welcome() {
 }
 // welcome();
 async function askQuestion() {
-    await inquirer
+    let answers = await inquirer
         .prompt([
         /* Pass your questions in here */
         {
@@ -51,31 +51,30 @@ async function askQuestion() {
             name: "num2",
             message: "Enter number "
         }
-    ])
-        .then((answers) => {
-        // console.log(answers);
-        if (answers.opertor == "Addition") {
-            console.log(`${answers.num1} + ${answers.num2} = ${answers.num1 + answers.num2}`);
-        }
-        else if (answers.opertor == "Subtraction") {
-            console.log(`${answers.num1} - ${answers.num2} = ${answers.num1 - answers.num2}`);
-        }
-        else if (answers.opertor == "Multiplaction") {
-            console.log(`${answers.num1} * ${answers.num2} = ${answers.num1 * answers.num2}`);
-        }
-        else if (answers.opertor == "Division") {
-            console.log(`${answers.num1} % ${answers.num2} = ${answers.num1 / answers.num2}`);
-        }
-    });
-    //   .catch((error) => {
-    //     if (error.isTtyError) {
-    //       // Prompt couldn't be rendered in the current environment
-    //     } else {
-    //       // Something else went wrong
-    //     } 
-    //   });
+    ]);
+    // .then((answers) => {     //we access through . because we know this is object
+    // or use another alternative of .then       save value in answers use async function
+    // console.log(answers);
+    if (answers.opertor == "Addition") {
+        console.log(`${answers.num1} + ${answers.num2} = ${answers.num1 + answers.num2}`);
+    }
+    else if (answers.opertor == "Subtraction") {
+        console.log(`${answers.num1} - ${answers.num2} = ${answers.num1 - answers.num2}`);
+    }
+    else if (answers.opertor == "Multiplaction") {
+        console.log(`${answers.num1} * ${answers.num2} = ${answers.num1 * answers.num2}`);
+    }
+    else if (answers.opertor == "Division") {
+        console.log(`${answers.num1} % ${answers.num2} = ${answers.num1 / answers.num2}`);
+    }
 }
-;
+//   .catch((error) => {
+//     if (error.isTtyError) {
+//       // Prompt couldn't be rendered in the current environment
+//     } else {
+//       // Something else went wrong
+//     } 
+//   });
 // askQuestion();
 // now we need to add new function for restart the procrss
 async function forReFresh() {

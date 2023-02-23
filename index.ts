@@ -43,7 +43,7 @@ async function welcome() {
 // welcome();
 
 async function askQuestion() {
-    inquirer
+   await inquirer
         .prompt([     // prompt retuen value in obbject thsts why we use .then   (bydefult we see in "answer" )
             /* Pass your questions in here */
 
@@ -78,17 +78,17 @@ async function askQuestion() {
                 console.log(`${answers.num1} - ${answers.num2} = ${answers.num1 - answers.num2}`);
             }
             else if (answers.opertor == "Multiplaction") {
-                console.log(`${answers.num1} - ${answers.num2} = ${answers.num1 * answers.num2}`);
+                console.log(`${answers.num1} * ${answers.num2} = ${answers.num1 * answers.num2}`);
             }
             else if (answers.opertor == "Division") {
                 console.log(`${answers.num1} % ${answers.num2} = ${answers.num1 / answers.num2}`);
             }
 
-
-
-
-
         })
+
+
+
+
 
     //   .catch((error) => {
     //     if (error.isTtyError) {
@@ -98,4 +98,22 @@ async function askQuestion() {
     //     } 
     //   });
 };
-askQuestion();
+// askQuestion();
+
+
+
+// now we need to add new function for restart the procrss
+
+async function forReFresh (){
+
+    do{
+        await askQuestion();        
+        var again = await inquirer
+        .prompt({
+            type: "input",
+            name: "restart",
+            message: "Want to Restart  press Y to restart" 
+        })
+    } while (again.restart == 'y' || again.restart == 'Y' || again.restart == 'YES' || again.restart == 'yes' )
+}
+forReFresh ();
